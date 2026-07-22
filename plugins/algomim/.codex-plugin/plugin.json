@@ -1,6 +1,6 @@
 {
   "name": "algomim",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Ask Algomim to answer or review bounded technical, design, and research tasks.",
   "author": {
     "name": "Algomim",
@@ -14,7 +14,7 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Algomim",
-    "shortDescription": "Ask Algomim for a focused response.",
+    "shortDescription": "Built for consistent CAD and BIM results.",
     "longDescription": "Send a bounded technical, design, or research task to Algomim and work with its response inside Codex. Codex can ask Algomim again as the task evolves.",
     "developerName": "Algomim",
     "category": "Productivity",

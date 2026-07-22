@@ -1,7 +1,7 @@
 interface:
   display_name: "Ask Algomim"
-  short_description: "Ask Algomim for a focused technical response."
-  icon_small: "./assets/icon.svg"
+  short_description: "Built for consistent CAD and BIM results."
+  icon_small: "./assets/logo.png"
   icon_large: "./assets/logo.png"
   brand_color: "#FE3D03"
   default_prompt: "Use $ask-algomim to ask Algomim about this task."

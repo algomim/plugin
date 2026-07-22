@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- Updated the compact listing description to `Built for consistent CAD and BIM results.`
+- Standardized plugin and skill presentation on the official Algomim logo.
+
 ## 0.2.0
 
 - Added plugin-card and skill-interface metadata for better discovery in Codex.

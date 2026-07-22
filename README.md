@@ -55,7 +55,7 @@ codex plugin list
 The output should include:
 
 ```text
-algomim@algomim  installed, enabled  0.2.0
+algomim@algomim  installed, enabled  0.2.1
 ```
 
 ### 5. Restart and test
