@@ -1,7 +1,7 @@
 {
   "name": "algomim",
-  "version": "0.2.1",
-  "description": "Ask Algomim to answer or review bounded technical, design, and research tasks.",
+  "version": "0.3.0",
+  "description": "Ask Algomim for bounded CAD, BIM, design, and technical guidance.",
   "author": {
     "name": "Algomim",
     "email": "support@algomim.com",
@@ -9,13 +9,12 @@
   },
   "homepage": "https://algomim.com",
   "repository": "https://github.com/algomim/plugin",
-  "keywords": ["algomim", "ask-algomim", "delegation", "mcp"],
-  "skills": "./skills/",
+  "keywords": ["algomim", "cad", "bim", "mcp"],
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Algomim",
     "shortDescription": "Built for consistent CAD and BIM results.",
-    "longDescription": "Send a bounded technical, design, or research task to Algomim and work with its response inside Codex. Codex can ask Algomim again as the task evolves.",
+    "longDescription": "Ask Algomim for a bounded CAD, BIM, technical, design, or research response through its hosted MCP service.",
     "developerName": "Algomim",
     "category": "Productivity",
     "capabilities": ["Interactive"],
@@ -23,12 +22,12 @@
     "privacyPolicyURL": "https://algomim.com/en/legal/privacy",
     "termsOfServiceURL": "https://algomim.com/en/legal/terms",
     "brandColor": "#FE3D03",
-    "composerIcon": "./skills/ask-algomim/assets/logo.png",
-    "logo": "./skills/ask-algomim/assets/logo.png",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png",
     "defaultPrompt": [
-      "@algomim Rhino’daki box scriptini incele.",
-      "Algomim’e bu yaklaşımı sor.",
-      "Ask Algomim to review this implementation."
+      "Ask Algomim to review this Rhino box script.",
+      "Algomim’e bu CAD yaklaşımını sor.",
+      "Ask Algomim to review this BIM implementation."
     ]
   }
 }

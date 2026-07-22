@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0
+
+- Changed the Codex package to an MCP-first integration and removed the separate Ask Algomim skill layer.
+- Kept the compatibility-stable `delegate_task` tool ID while presenting it as **Ask Algomim**.
+- Documented terminal `completed`, `truncated`, and `failed` results and removed automatic polling or unchanged-request repetition.
+- Kept a deprecated structured `text` alias while clients migrate to the new `answer` field.
+- Removed the model-selected output-token limit from the public tool workflow.
+- Moved the single empty-response or connection retry inside the hosted call and made the failed first attempt non-chargeable to the user.
+- Moved the Algomim logo to the plugin-level assets directory.
+- Added copy-paste API-key setup instructions for Windows and macOS.
+- Clarified which environment-variable commands are persistent, PowerShell-session-only, or macOS-login-session-only.
+- Documented the persistent macOS Codex `.env` setup and restart requirements.
+
 ## 0.2.1
 
 - Updated the compact listing description to `Built for consistent CAD and BIM results.`

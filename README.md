@@ -6,9 +6,9 @@ Official monorepo for Algomim integrations with AI coding and work clients.
 
 | Package | Client | Purpose |
 | --- | --- | --- |
-| [`plugins/algomim`](./plugins/algomim) | Codex | Ask Algomim to answer or review bounded tasks. |
+| [`plugins/algomim`](./plugins/algomim) | Codex | Ask Algomim for bounded CAD, BIM, design, and technical guidance. |
 
-Each directory under `plugins/` is an independently installable plugin package. Shared MCP and skill content stays at the package root; client-specific manifests use dedicated directories such as `.codex-plugin/` and, in the future, `.claude-plugin/`.
+Each directory under `plugins/` is an independently installable plugin package. Shared service configuration and assets stay at the package root; client-specific manifests use dedicated directories such as `.codex-plugin/` and, in the future, `.claude-plugin/`.
 
 ## Install in Codex
 
@@ -19,14 +19,31 @@ Each directory under `plugins/` is an independently installable plugin package. 
 
 ### 1. Configure the API key
 
-Create a user environment variable:
+Choose the command for the user's operating system. Replace the placeholder with the user's own Algomim Model API key.
 
-```text
-Name:  ALGOMIM_API_KEY
-Value: your sk-... Algomim API key
+#### Windows
+
+For Codex desktop, create a persistent user environment variable from PowerShell:
+
+```powershell
+setx ALGOMIM_API_KEY "your sk-... Algomim API key"
 ```
 
-The API key only authenticates requests to Algomim. It does not download or install the plugin. Never add the raw key to plugin files or source control.
+`setx` affects applications opened after the command runs. Fully close Codex and reopen it.
+
+#### macOS
+
+For a quick test or pilot setup, add the key to the current macOS login session:
+
+```shell
+launchctl setenv ALGOMIM_API_KEY "your sk-... Algomim API key"
+```
+
+Fully quit Codex with `Cmd+Q` and reopen it. The value may be cleared after signing out or restarting the Mac; run the command again when needed. Remove it with `launchctl unsetenv ALGOMIM_API_KEY`.
+
+For session-only Windows CLI setup or persistent macOS setup, follow [`plugins/algomim/docs/AUTHENTICATION.md`](./plugins/algomim/docs/AUTHENTICATION.md).
+
+The API key only authenticates requests to Algomim. It does not download or install the plugin. Never add the raw key to plugin files or source control. Commands containing a key may remain in shell history.
 
 ### 2. Add the Algomim marketplace
 
@@ -55,12 +72,12 @@ codex plugin list
 The output should include:
 
 ```text
-algomim@algomim  installed, enabled  0.2.1
+algomim@algomim  installed, enabled  0.3.0
 ```
 
 ### 5. Restart and test
 
-Fully close Codex, reopen it, and start a new task so the MCP tool and skill are loaded. Then try:
+Fully close Codex, reopen it, and start a new task so the MCP tool is loaded. Then try:
 
 ```text
 @algomim Rhino’daki box scriptini incele.
@@ -68,7 +85,9 @@ Fully close Codex, reopen it, and start a new task so the MCP tool and skill are
 
 The plugin connects to the hosted Algomim MCP server. It does not install the Algomim model on the user's computer.
 
-When invoked, Codex states what it is asking, waits for the single non-streaming tool result, and presents the Algomim response first. Codex can ask Algomim again in later agentic rounds when the task benefits from another response.
+When invoked, Codex states what it is asking, waits for one non-streaming MCP result, and presents the Algomim response first. Every result is terminal: `completed`, `truncated`, or `failed`. Codex does not poll or automatically repeat an unchanged request.
+
+For action requests, Algomim supplies expert guidance and Codex separately performs any local Rhino, Revit, or other tool calls. If Algomim returns `truncated` or `failed`, Codex reports that outcome and asks before retrying or continuing without Algomim. A materially new question can use another Algomim call; there is no numeric round limit.
 
 The Plugins screen should show the Algomim name, logo, description, developer, starter prompts, and legal links. If an older card is cached, run the update commands below and restart Codex.
 

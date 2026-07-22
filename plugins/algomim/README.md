@@ -1,12 +1,26 @@
 # Algomim plugin
 
-The Algomim plugin exposes the hosted Algomim model as an MCP tool and provides a reusable workflow for asking Algomim to answer or review a bounded task.
+The Algomim plugin exposes the hosted Algomim model as one MCP tool for bounded CAD, BIM, design, research, and technical guidance.
 
-Its Codex listing includes Algomim branding, starter prompts, developer details, and links to the website, privacy policy, and terms of service. Skill-level metadata lets Codex present the Ask Algomim capability with its own name, description, and icons.
+Its Codex listing includes Algomim branding, starter prompts, developer details, and links to the website, privacy policy, and terms of service. The MCP tool carries the Ask Algomim title, trigger guidance, and terminal result contract.
 
 ## Authentication
 
 Set `ALGOMIM_API_KEY` to an Algomim Model API key before starting Codex. The plugin sends it as a bearer token to `https://api.algomim.com/mcp`.
+
+Quick setup:
+
+```powershell
+# Windows user environment; restart Codex after running
+setx ALGOMIM_API_KEY "your sk-... Algomim API key"
+```
+
+```shell
+# macOS login session; quit Codex with Cmd+Q and reopen it
+launchctl setenv ALGOMIM_API_KEY "your sk-... Algomim API key"
+```
+
+On Windows, `setx` persists for the user. On macOS, `launchctl setenv` is intended for quick test or pilot setup and may be cleared after sign-out or restart.
 
 Never place the raw API key in `.mcp.json`, a shell script, or source control.
 
@@ -14,16 +28,21 @@ See [`docs/AUTHENTICATION.md`](./docs/AUTHENTICATION.md) for the current API-key
 
 ## Included capability
 
-- `delegate_task`: delegates one bounded task to Algomim.
-- `ask-algomim` skill: guides explicit invocation, safe delegation, attribution, repeated use, and empty-response handling.
+- `delegate_task`: the compatibility-stable MCP tool ID, presented to users as **Ask Algomim**.
 
 ## Interaction
 
-Invoke the plugin with `@algomim` or explicitly ask Codex to ask Algomim. Before each tool call, Codex gives one topic-specific status message. Each invocation waits for one non-streaming result; it does not invent intermediate steps or partial progress.
+Invoke the plugin with `@algomim` or explicitly ask Codex to ask Algomim. Codex gives one short, topic-specific status message and waits for one non-streaming result. There is no skill-loading narration and no invented intermediate progress.
 
-Codex may ask Algomim again in later agentic rounds when another response would help the same task. There is no plugin-defined round counter or separate iteration mode, but every delegated instruction remains concrete and bounded. An empty completed response is retried once with a shorter instruction.
+Every returned result is terminal:
 
-The result is presented first as the Algomim response. Codex adds its own comparison only when the user requests one. Tool failures are explained in user-focused language without inventing an Algomim answer.
+- `completed`: a usable Algomim answer.
+- `truncated`: the call ended with a partial or empty answer; it is not still running.
+- `failed`: the call ended without an Algomim answer.
+
+A completely empty completed response or connection failure is retried once inside the hosted service, so Codex still sees one MCP invocation. The failed first attempt is recorded with zero user charge; a successful retry is charged normally. Codex does not poll or automatically repeat an unchanged request. A materially new question may use another call; there is no numeric round limit.
+
+The Algomim response is presented first. Codex adds its own comparison only when requested. For action requests, Algomim provides guidance while Codex separately runs and attributes local Rhino, Revit, or other tools. After a `truncated` or `failed` result, Codex asks before retrying or continuing without Algomim.
 
 ## Release readiness
 
@@ -31,4 +50,4 @@ See [`docs/PUBLISHING.md`](./docs/PUBLISHING.md) for the Git marketplace release
 
 ## Client compatibility
 
-The MCP endpoint and skill content are client-neutral. Codex-specific metadata lives in `.codex-plugin/`. A future Claude integration can add `.claude-plugin/` metadata without duplicating the shared MCP or skill content.
+The MCP endpoint and service contract are client-neutral. Codex-specific presentation metadata lives in `.codex-plugin/`. A future Claude integration can add `.claude-plugin/` metadata without duplicating the hosted MCP configuration.
