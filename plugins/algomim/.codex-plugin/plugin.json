@@ -1,7 +1,7 @@
 {
   "name": "algomim",
-  "version": "0.4.0",
-  "description": "Call Algomim for project-aware CAD, BIM, design, and technical guidance.",
+  "version": "0.4.1",
+  "description": "Consult Algomim for reusable AEC expert context across connected tools and projects.",
   "author": {
     "name": "Algomim",
     "email": "support@algomim.com",
@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "Algomim",
     "shortDescription": "Built for consistent CAD and BIM results.",
-    "longDescription": "Call Algomim for project-aware AEC guidance through its hosted MCP service. Codex carries the relevant user intent, project evidence, prior guidance, and execution results into each independent consultation.",
+    "longDescription": "Consult Algomim for on-demand AEC expert context. Codex carries the relevant intent, project evidence, connected capabilities, prior guidance, and execution results into each independent consultation, then continues the work with the available tools.",
     "developerName": "Algomim",
     "category": "Productivity",
     "capabilities": ["Interactive"],
@@ -25,9 +25,9 @@
     "composerIcon": "./assets/logo.png",
     "logo": "./assets/logo.png",
     "defaultPrompt": [
-      "@algomim Use the current Rhino project context to guide this box workflow.",
-      "@algomim Bu CAD yaklaşımını mevcut proje bağlamı ve kanıtlarla değerlendir.",
-      "@algomim Guide this BIM review using the current project evidence."
+      "@algomim Review the current project using the available evidence and connected tools, then continue with the necessary checks.",
+      "@algomim Get the expert context needed for this design task, use the connected applications to complete it, and verify the result.",
+      "@algomim Evaluate the current approach, identify the relevant standards and verification criteria, then continue the work using the available tools."
     ]
   }
 }

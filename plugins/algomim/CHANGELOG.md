@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.1
+
+- Reframed completed Algomim answers as reusable working expert context for the host agent rather than delegated execution or a second user-facing prompt.
+- Allowed purposeful automatic consultation when work enters a materially new AEC intent or existing guidance no longer covers a domain decision, while preserving explicit `@algomim` invocation.
+- Expanded caller-carried context guidance to cover expected outcomes, target environments, connected systems, relevant available capabilities and tool schemas, files, actions, results, failed verification, and open questions.
+- Directed Algomim to reason about the underlying intent, prefer supplied host-operable automation, and provide exact tool references, ready-to-adapt calls, scripts, API examples, fallbacks, and verification criteria when useful.
+- Added the action handoff: acknowledge completed guidance once, immediately continue with connected tools, and verify the real result without relabeling the answer as another Algomim prompt.
+- Changed the visible MCP title to **Consult Algomim** while keeping the stable `call_algomim` tool ID and `message + context?` contract.
+- Replaced Rhino-specific and mixed-language starter prompts with English, provider-neutral examples for review, design, standards, and connected-tool workflows.
+
 ## 0.4.0
 
 - Replaced the public `delegate_task` tool with the breaking `call_algomim({ message, context? })` contract and the **Call Algomim** title; no legacy alias is published.
