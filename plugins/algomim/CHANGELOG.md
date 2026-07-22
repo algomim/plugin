@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0
+
+- Replaced the public `delegate_task` tool with the breaking `call_algomim({ message, context? })` contract and the **Call Algomim** title; no legacy alias is published.
+- Reframed Algomim as a project-aware AEC consultation that can provide direct answers, analysis methods, adaptive instructions, decision criteria, verification guidance, or code examples.
+- Added caller-carried context for relevant user intent, conversation history, project evidence, prior guidance, local tool results, and errors while keeping every call independent and terminal.
+- Documented purposeful re-consultation after new evidence, errors, decision points, or failed verification without polling, unchanged-request repetition, or a numeric round limit.
+- Clarified direct presentation for information and review requests and the apply, verify, then summarize flow for action requests.
+- Added breaking-upgrade instructions requiring a marketplace upgrade, plugin reinstall, full Codex restart, and a new task.
+
 ## 0.3.0
 
 - Changed the Codex package to an MCP-first integration and removed the separate Ask Algomim skill layer.

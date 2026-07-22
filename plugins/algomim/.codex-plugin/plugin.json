@@ -1,7 +1,7 @@
 {
   "name": "algomim",
-  "version": "0.3.0",
-  "description": "Ask Algomim for bounded CAD, BIM, design, and technical guidance.",
+  "version": "0.4.0",
+  "description": "Call Algomim for project-aware CAD, BIM, design, and technical guidance.",
   "author": {
     "name": "Algomim",
     "email": "support@algomim.com",
@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "Algomim",
     "shortDescription": "Built for consistent CAD and BIM results.",
-    "longDescription": "Ask Algomim for a bounded CAD, BIM, technical, design, or research response through its hosted MCP service.",
+    "longDescription": "Call Algomim for project-aware AEC guidance through its hosted MCP service. Codex carries the relevant user intent, project evidence, prior guidance, and execution results into each independent consultation.",
     "developerName": "Algomim",
     "category": "Productivity",
     "capabilities": ["Interactive"],
@@ -25,9 +25,9 @@
     "composerIcon": "./assets/logo.png",
     "logo": "./assets/logo.png",
     "defaultPrompt": [
-      "Ask Algomim to review this Rhino box script.",
-      "Algomim’e bu CAD yaklaşımını sor.",
-      "Ask Algomim to review this BIM implementation."
+      "@algomim Use the current Rhino project context to guide this box workflow.",
+      "@algomim Bu CAD yaklaşımını mevcut proje bağlamı ve kanıtlarla değerlendir.",
+      "@algomim Guide this BIM review using the current project evidence."
     ]
   }
 }

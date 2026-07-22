@@ -14,6 +14,6 @@ This repository is the provider-neutral Algomim plugin monorepo.
 - Never commit credentials. Reference environment-variable names from MCP configuration.
 - Keep the plugin folder name, marketplace entry name, and client manifest name aligned.
 - Use strict semantic versions for released plugin manifests.
-- Keep each delegated tool workflow bounded and include complete supporting context.
+- Keep each consultation call terminal and include the relevant supporting context needed for that call.
 - Validate Codex plugins with the bundled `plugin-creator` validator before release.
 - Add provider-specific files only when the target client requires them; do not duplicate shared instructions without a compatibility reason.

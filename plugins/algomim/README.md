@@ -1,8 +1,8 @@
 # Algomim plugin
 
-The Algomim plugin exposes the hosted Algomim model as one MCP tool for bounded CAD, BIM, design, research, and technical guidance.
+The Algomim plugin exposes the hosted Algomim model as one project-aware MCP consultation tool for CAD, BIM, design, research, and technical guidance.
 
-Its Codex listing includes Algomim branding, starter prompts, developer details, and links to the website, privacy policy, and terms of service. The MCP tool carries the Ask Algomim title, trigger guidance, and terminal result contract.
+Its Codex listing includes Algomim branding, starter prompts, developer details, and links to the website, privacy policy, and terms of service. The MCP tool carries the **Call Algomim** title, project-context guidance, and terminal result contract.
 
 ## Authentication
 
@@ -28,11 +28,20 @@ See [`docs/AUTHENTICATION.md`](./docs/AUTHENTICATION.md) for the current API-key
 
 ## Included capability
 
-- `delegate_task`: the compatibility-stable MCP tool ID, presented to users as **Ask Algomim**.
+- `call_algomim({ message, context? })`: the single public MCP tool, presented to users as **Call Algomim**.
+
+`message` is required, non-empty free text describing what guidance is needed now. `context` is optional, non-empty free text containing only the information relevant to that consultation. It can include:
+
+- The user's goal and relevant conversation history.
+- Current project state, constraints, sources, and evidence.
+- Prior Algomim guidance and the local work performed from it.
+- Tool results, verification findings, errors, and the reason for consulting again.
+
+Codex does not blindly forward the entire conversation. Credentials and unrelated private data must not be included.
 
 ## Interaction
 
-Invoke the plugin with `@algomim` or explicitly ask Codex to ask Algomim. Codex gives one short, topic-specific status message and waits for one non-streaming result. There is no skill-loading narration and no invented intermediate progress.
+Invoke the plugin with `@algomim`, “Algomim'e sor,” or “Call Algomim.” When local project state is needed, Codex first gathers narrowly scoped, read-only context and then makes one non-streaming call. There is no skill-loading narration and no invented intermediate progress.
 
 Every returned result is terminal:
 
@@ -40,9 +49,22 @@ Every returned result is terminal:
 - `truncated`: the call ended with a partial or empty answer; it is not still running.
 - `failed`: the call ended without an Algomim answer.
 
-A completely empty completed response or connection failure is retried once inside the hosted service, so Codex still sees one MCP invocation. The failed first attempt is recorded with zero user charge; a successful retry is charged normally. Codex does not poll or automatically repeat an unchanged request. A materially new question may use another call; there is no numeric round limit.
+A completely empty completed response or connection failure is retried once inside the hosted service, so Codex still sees one MCP invocation. The failed first attempt is recorded with zero user charge; a successful retry is charged normally. `truncated` and `failed` results are not automatically retried.
 
-The Algomim response is presented first. Codex adds its own comparison only when requested. For action requests, Algomim provides guidance while Codex separately runs and attributes local Rhino, Revit, or other tools. After a `truncated` or `failed` result, Codex asks before retrying or continuing without Algomim.
+Each call is independent: the hosted service does not retain a consultation session or previous response. One Algomim response can guide several local tool rounds. If new project evidence, an error, a decision point, or a failed verification makes more guidance useful, Codex calls `call_algomim` again and carries the relevant prior guidance and updated project context in that new call. Codex does not poll, repeat an unchanged request, or consult Algomim for every mechanical step. There is no plugin-defined numeric consultation limit.
+
+For information and review requests, Codex presents the Algomim response directly. For action requests, Codex uses the guidance, runs the appropriate Rhino, Revit, AutoCAD, or other local tools, verifies the real project result, and then summarizes the outcome and Algomim's contribution. Algomim does not claim to see or modify the local project; local execution remains owned by Codex. After a `truncated` or `failed` result, Codex reports the terminal outcome and asks before retrying or continuing without Algomim.
+
+## Updating to 0.4.0
+
+Version `0.4.0` introduces the breaking `call_algomim({ message, context? })` tool contract. Upgrade the marketplace and reinstall the plugin:
+
+```shell
+codex plugin marketplace upgrade algomim
+codex plugin add algomim@algomim
+```
+
+Fully close and reopen Codex after the upgrade, then start a new task. Existing open tasks can retain the previous tool name and input schema.
 
 ## Release readiness
 
