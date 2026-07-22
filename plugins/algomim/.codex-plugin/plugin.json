@@ -1,7 +1,7 @@
 {
   "name": "algomim",
-  "version": "0.4.2",
-  "description": "Consult Algomim for reusable AEC expert context across connected tools and projects.",
+  "version": "0.4.3",
+  "description": "Consult Algomim for task-specific AEC guidance across connected tools and project environments.",
   "author": {
     "name": "Algomim",
     "email": "support@algomim.com",
@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "Algomim",
     "shortDescription": "Built for consistent CAD and BIM results.",
-    "longDescription": "Consult Algomim for AEC expert context on explicit request or proactively when specialist guidance is materially useful. Codex carries the relevant intent, project evidence, connected capabilities, prior guidance, and execution results into each independent consultation, then continues the work with the available tools.",
+    "longDescription": "Consult Algomim explicitly or let Codex consult when the current AEC task materially benefits from specialist guidance. Codex supplies a self-contained snapshot of the current request, project evidence, connected capabilities, constraints, and current execution results. Algomim returns guidance; Codex then presents findings, prepares instructions, or continues the work with the available tools.",
     "developerName": "Algomim",
     "category": "Productivity",
     "capabilities": ["Interactive"],
@@ -25,9 +25,9 @@
     "composerIcon": "./assets/logo.png",
     "logo": "./assets/logo.png",
     "defaultPrompt": [
-      "@algomim Review the current project using the available evidence and connected tools, then continue with the necessary checks.",
-      "@algomim Get the expert context needed for this design task, use the connected applications to complete it, and verify the result.",
-      "@algomim Evaluate the current approach, identify the relevant standards and verification criteria, then continue the work using the available tools."
+      "@algomim Analyze the active project and report the most important design, coordination, and compliance risks.",
+      "@algomim Generate project-specific instructions for developing the selected facade detail. Do not modify the project yet.",
+      "@algomim Create a detailed facade in the active project and verify the result."
     ]
   }
 }

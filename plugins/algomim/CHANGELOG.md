@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.3
+
+- Added distinct starter prompts and host UX for three user intents: analyze the current project, generate instructions without modifying it, and perform an action followed by verification.
+- Clarified that `@algomim` is the explicit force trigger while natural, result-oriented AEC requests may still cause a purposeful consultation when specialist guidance is materially useful.
+- Defined every consultation context as a self-contained snapshot of the current request; the hosted service retains no session, conversation history, prior response, or cross-request guidance.
+- Expanded the any-to-any AEC description to cover connected applications, APIs, tools, project environments, files, regulations, and data sources without assigning host-tool execution to Algomim.
+- Added one honest waiting-status rule and preserved private upstream `stream: true` processing with one terminal public MCP result; live token rendering remains client-dependent.
+
 ## 0.4.2
 
 - Strengthened the MCP host instructions so Codex proactively consults Algomim for a materially new AEC intent, missing specialist guidance, material uncertainty or a domain decision, an execution error, or failed verification without requiring an explicit mention every time.
