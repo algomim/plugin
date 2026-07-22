@@ -12,19 +12,68 @@ Each directory under `plugins/` is an independently installable plugin package. 
 
 ## Install in Codex
 
-Add the repository as a marketplace source:
+### Requirements
 
-```shell
-codex plugin marketplace add algomim/plugin
+- Codex must be installed.
+- You need a valid Algomim Model API key.
+
+### 1. Configure the API key
+
+Create a user environment variable:
+
+```text
+Name:  ALGOMIM_API_KEY
+Value: your sk-... Algomim API key
 ```
 
-Install the plugin:
+The API key only authenticates requests to Algomim. It does not download or install the plugin. Never add the raw key to plugin files or source control.
+
+### 2. Add the Algomim marketplace
+
+Run this command from PowerShell or another terminal:
+
+```shell
+codex plugin marketplace add https://github.com/algomim/plugin.git
+```
+
+This downloads the public repository and registers its plugin catalog as the `algomim` marketplace.
+
+### 3. Install the plugin
 
 ```shell
 codex plugin add algomim@algomim
 ```
 
-Set `ALGOMIM_API_KEY` to your Algomim Model API key, restart Codex, and start a new task so the MCP tool and skill are loaded.
+The first `algomim` is the plugin name; the second is the marketplace name.
+
+### 4. Verify the installation
+
+```shell
+codex plugin list
+```
+
+The output should include:
+
+```text
+algomim@algomim  installed, enabled  0.1.0
+```
+
+### 5. Restart and test
+
+Fully close Codex, reopen it, and start a new task so the MCP tool and skill are loaded. Then try:
+
+```text
+Ask Algomim for a second opinion on this approach.
+```
+
+The plugin connects to the hosted Algomim MCP server. It does not install the Algomim model on the user's computer.
+
+### Update
+
+```shell
+codex plugin marketplace upgrade algomim
+codex plugin add algomim@algomim
+```
 
 ## Security
 
