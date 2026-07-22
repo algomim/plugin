@@ -1,0 +1,28 @@
+{
+  "name": "algomim",
+  "version": "0.1.0",
+  "description": "Delegate bounded tasks to Algomim for an independent second opinion.",
+  "author": {
+    "name": "Algomim",
+    "url": "https://algomim.com"
+  },
+  "homepage": "https://algomim.com",
+  "repository": "https://github.com/algomim/plugin",
+  "keywords": ["algomim", "second-opinion", "delegation", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Algomim",
+    "shortDescription": "Get a second opinion from Algomim.",
+    "longDescription": "Delegate a bounded technical, design, or research task to the Algomim model and compare its independent response with your current approach.",
+    "developerName": "Algomim",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read"],
+    "websiteURL": "https://algomim.com",
+    "defaultPrompt": [
+      "Algomim'den bu konuda ikinci görüş al.",
+      "Ask Algomim to review this approach.",
+      "Compare your answer with Algomim's opinion."
+    ]
+  }
+}

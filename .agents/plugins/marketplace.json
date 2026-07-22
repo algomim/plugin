@@ -1,0 +1,20 @@
+{
+  "name": "algomim",
+  "interface": {
+    "displayName": "Algomim"
+  },
+  "plugins": [
+    {
+      "name": "algomim",
+      "source": {
+        "source": "local",
+        "path": "./plugins/algomim"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

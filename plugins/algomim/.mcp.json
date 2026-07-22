@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "algomim": {
+      "type": "http",
+      "url": "https://api.algomim.com/mcp",
+      "bearer_token_env_var": "ALGOMIM_API_KEY"
+    }
+  }
+}
