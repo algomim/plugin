@@ -72,7 +72,7 @@ codex plugin list
 The output should include:
 
 ```text
-algomim@algomim  installed, enabled  0.4.1
+algomim@algomim  installed, enabled  0.4.2
 ```
 
 ### 5. Restart and test
@@ -85,9 +85,9 @@ Fully close Codex, reopen it, and start a new task so the MCP tool is loaded. Th
 
 The plugin connects to the hosted Algomim MCP server. It does not install the Algomim model on the user's computer.
 
-When invoked, Codex supplies `call_algomim` with a required free-text `message` and, when useful, a free-text `context`. The context can carry the original request, interpreted intent, expected outcome, relevant conversation, target environments, connected systems, relevant available capabilities or tool schemas, project evidence, constraints, prior guidance, actions, results, errors, failed verification, and the current open question. Codex sends all task-relevant context rather than an exhaustive dump and excludes credentials, secrets, and unrelated private data.
+For each consultation, Codex supplies `call_algomim` with a required free-text `message` and, when useful, a free-text `context`. The context can carry the original request, interpreted intent, expected outcome, relevant conversation, target environments, connected systems, relevant available capabilities or tool schemas, project evidence, constraints, prior guidance, actions, results, errors, failed verification, and the current open question. Codex sends all task-relevant context rather than an exhaustive dump and excludes credentials, secrets, and unrelated private data.
 
-Every call is independent, non-streaming, and terminal: `completed`, `truncated`, or `failed`. The server does not retain consultation history. One completed response becomes working expert context and can guide several rounds across connected tools, applications, and data sources. Codex consults again when a material intent or environment change, new evidence, an error, a decision point, or a failed verification invalidates or extends that guidance. It does not poll, automatically repeat an unchanged request, or call Algomim for every mechanical step.
+Every public MCP call is independent and terminal: `completed`, `truncated`, or `failed`. The server does not retain consultation history. The hosted Model API consumes its private Inference Responses stream internally and returns one terminal MCP result; live token-by-token rendering in Codex remains client-dependent. One completed response becomes working expert context and can guide several rounds across connected tools, applications, and data sources. Codex consults proactively when a materially new AEC intent, missing specialist guidance, material uncertainty or a domain decision, an execution error, or failed verification requires expert context. It does not poll, automatically repeat an unchanged request, or call Algomim for every mechanical step, parameter change, unchanged request, or routine status check.
 
 For information and review requests, Codex presents the substantive answer directly. For action requests, Codex acknowledges the completed guidance once, immediately continues with the appropriate connected tools, verifies the result in the real project, and then summarizes the outcome. Algomim may supply exact references to available tools, ready-to-adapt calls, scripts, API examples, fallbacks, and verification criteria, but local actions remain under Codex's control. If Algomim returns `truncated` or `failed`, Codex reports that terminal outcome and asks before retrying or continuing without usable guidance. There is no plugin-defined numeric consultation limit.
 
@@ -95,7 +95,7 @@ The Plugins screen should show the Algomim name, logo, description, developer, s
 
 ### Update
 
-Version `0.4.1` keeps `call_algomim({ message, context? })` and updates its expert-context orchestration, visible title, and starter prompts. After upgrading, reinstall the plugin, fully restart Codex, and begin a new task so Codex loads the new instructions and metadata.
+Version `0.4.2` keeps `call_algomim({ message, context? })` and the **Consult Algomim** title. It strengthens proactive consultation guidance and enables private upstream streaming while preserving one terminal MCP result. After upgrading, reinstall the plugin, fully restart Codex, and begin a new task so Codex loads the new instructions and metadata.
 
 ```shell
 codex plugin marketplace upgrade algomim

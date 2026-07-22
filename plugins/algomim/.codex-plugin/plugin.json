@@ -1,6 +1,6 @@
 {
   "name": "algomim",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Consult Algomim for reusable AEC expert context across connected tools and projects.",
   "author": {
     "name": "Algomim",
@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "Algomim",
     "shortDescription": "Built for consistent CAD and BIM results.",
-    "longDescription": "Consult Algomim for on-demand AEC expert context. Codex carries the relevant intent, project evidence, connected capabilities, prior guidance, and execution results into each independent consultation, then continues the work with the available tools.",
+    "longDescription": "Consult Algomim for AEC expert context on explicit request or proactively when specialist guidance is materially useful. Codex carries the relevant intent, project evidence, connected capabilities, prior guidance, and execution results into each independent consultation, then continues the work with the available tools.",
     "developerName": "Algomim",
     "category": "Productivity",
     "capabilities": ["Interactive"],

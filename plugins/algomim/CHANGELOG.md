@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.2
+
+- Strengthened the MCP host instructions so Codex proactively consults Algomim for a materially new AEC intent, missing specialist guidance, material uncertainty or a domain decision, an execution error, or failed verification without requiring an explicit mention every time.
+- Kept automatic consultation purposeful: existing guidance is reused across mechanical actions, parameter changes, unchanged requests, and routine status checks.
+- Switched the hosted Model API-to-Inference request to `stream: true` and added bounded, validated Responses SSE consumption, including fragmented UTF-8 output, empty output, terminal errors, and malformed terminal-envelope handling.
+- Preserved the single terminal MCP result and the public `call_algomim({ message, context? })` contract. Live token-by-token rendering in Codex remains client-dependent and is not promised by this release.
+
 ## 0.4.1
 
 - Reframed completed Algomim answers as reusable working expert context for the host agent rather than delegated execution or a second user-facing prompt.
