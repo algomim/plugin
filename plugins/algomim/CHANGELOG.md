@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- MCP authentication failures now point users to `ALGOMIM_API_KEY` setup and the plugin authentication docs instead of returning only a generic missing Authorization header.
+
 ## 0.4.3
 
 - Added distinct starter prompts and host UX for three user intents: analyze the current project, generate instructions without modifying it, and perform an action followed by verification.
