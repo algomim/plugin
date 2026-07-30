@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "algomim",
+  "description": "Official Algomim plugins",
+  "owner": {
+    "name": "Algomim",
+    "url": "https://algomim.com"
+  },
+  "plugins": [
+    {
+      "name": "algomim",
+      "displayName": "Algomim",
+      "source": "./plugins/algomim",
+      "description": "Provides execution-ready AEC directives for Claude to apply and verify."
+    }
+  ]
+}
