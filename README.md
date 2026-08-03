@@ -72,7 +72,7 @@ codex plugin list
 The output should include:
 
 ```text
-algomim@algomim  installed, enabled  0.4.3
+algomim@algomim  installed, enabled  0.4.4
 ```
 
 ### 5. Restart and test
@@ -109,7 +109,7 @@ The Plugins screen should show the Algomim name, logo, description, developer, s
 
 ### Update
 
-Version `0.4.3` keeps `call_algomim({ message, context? })`, the **Consult Algomim** title, private upstream streaming, and one terminal public MCP result. It clarifies the current-request-only context boundary and the Analyze, Instructions, and Action UX. After upgrading, reinstall the plugin, fully restart Codex, and begin a new task so Codex loads the new instructions and metadata.
+Version `0.4.4` increases the bundled MCP tool-call timeout to 10 minutes and improves missing-key guidance. The `call_algomim({ message, context? })` contract, private upstream streaming, and one terminal public MCP result remain unchanged. After upgrading, reinstall the plugin, fully restart Codex, and begin a new task so Codex loads the new configuration and metadata.
 
 ```shell
 codex plugin marketplace upgrade algomim

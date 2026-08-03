@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.4.4
 
+- Increased the bundled MCP tool-call timeout to 600 seconds so long-running Algomim consultations can complete without requiring users to edit their Codex configuration.
 - MCP authentication failures now point users to `ALGOMIM_API_KEY` setup and the plugin authentication docs instead of returning only a generic missing Authorization header.
 
 ## 0.4.3

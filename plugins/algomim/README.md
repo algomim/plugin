@@ -58,6 +58,8 @@ The same result-oriented requests can be written naturally without `@algomim`; t
 
 When runtime context is needed, Codex first gathers narrowly scoped, read-only facts and relevant capability information, then makes one terminal call. During the call it gives one short, honest status in the user's language, such as "I am getting the necessary guidance from Algomim..." It does not narrate skill loading, dump tool discovery, invent intermediate progress, or continue with filler status messages.
 
+The bundled MCP configuration allows a tool call to run for up to 600 seconds before the Codex host cancels it. Users do not need to add a separate timeout setting. This client-side deadline does not extend a shorter server, proxy, or infrastructure timeout.
+
 The hosted Model API consumes its private Inference Responses stream incrementally and folds it into one terminal MCP result. Codex does not necessarily render those private deltas live; token-by-token display remains client-dependent. Algomim reasons about the current intent and can return implementation guidance, review methods, decision and verification criteria, exact supplied-tool references, ready-to-adapt tool calls, scripts, API examples, or a direct answer. It can support AEC work across connected applications, APIs, tools, project environments, files, regulations, and other data sources. It does not execute host tools or claim to have inspected the project.
 
 Every returned result is terminal:
@@ -89,9 +91,9 @@ User intent
     -> Codex verifies any real-world action
 ```
 
-## Updating to 0.4.3
+## Updating to 0.4.4
 
-Version `0.4.3` keeps the `call_algomim({ message, context? })` contract, **Consult Algomim** title, private upstream streaming, and one terminal public MCP result. It clarifies the current-request-only context boundary and the Analyze, Instructions, and Action UX. Upgrade the marketplace and reinstall the plugin:
+Version `0.4.4` increases the bundled MCP tool-call timeout to 10 minutes and improves missing-key guidance. The `call_algomim({ message, context? })` contract, **Consult Algomim** title, private upstream streaming, and one terminal public MCP result remain unchanged. Upgrade the marketplace and reinstall the plugin:
 
 ```shell
 codex plugin marketplace upgrade algomim

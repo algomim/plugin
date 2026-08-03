@@ -10,8 +10,9 @@ This repository currently distributes Algomim through a public Git-backed Codex 
 - Scan the release diff for API keys, bearer tokens, local paths, and private endpoints.
 - Commit and push the release to the public `main` branch.
 - Verify installation from a clean Codex profile, including the plugin card, the Analyze, Instructions, and Action starter prompts, explicit `@algomim` invocation, natural result-oriented invocation, purposeful consultation guardrails, MCP connection, and missing-key error.
-- For `0.4.3`, verify the upgrade path with `codex plugin marketplace upgrade algomim`, plugin reinstall, a full Codex restart, and a new task.
-- Verify a fresh MCP connection reports server version `0.4.3`, exposes only `call_algomim`, and describes each context as a self-contained current-request snapshot without server-side history.
+- For `0.4.4`, verify the upgrade path with `codex plugin marketplace upgrade algomim`, plugin reinstall, a full Codex restart, and a new task.
+- Verify the installed plugin applies `tool_timeout_sec: 600` without requiring a user config override.
+- Verify a fresh MCP connection reports the expected deployed server version, exposes only `call_algomim`, and describes each context as a self-contained current-request snapshot without server-side history.
 - Verify Analyze presents findings without modifying the project; Instructions keeps the project unchanged and offers the appropriate show, adapt, or apply next step; Action acknowledges completed guidance once, continues with connected tools, verifies the real result, and summarizes it.
 - Verify the host gives one short, honest waiting status without skill-loading narration, tool-catalog dumping, invented progress, or repeated filler updates.
 - Verify the hosted request is recorded with `stream: true`, the private Responses SSE stream is folded into one terminal MCP result, and the listing does not promise live token rendering in Codex.
